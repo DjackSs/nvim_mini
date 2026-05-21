@@ -1,19 +1,26 @@
--- ~/.config/nvim/init.lua
-
 -- Basic Settings
 vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 8
+vim.opt.wrap = true
+
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
-vim.opt.wrap = true
 vim.opt.cursorline = true
-vim.opt.termguicolors = true -- Required for true colors
-vim.opt.scrolloff = 8
+
+vim.opt.termguicolors = true -- 24-bit color
 vim.opt.signcolumn = "yes"
+vim.opt.showmatch = true
+
+vim.opt.autoread = true
+vim.opt.selection = "inclusive"
 vim.opt.clipboard = "unnamedplus"
+vim.opt.mouse = "a"
+vim.opt.encoding = "UTF-8"
 
 -- Set the leader key to Space
 vim.g.mapleader = " "
@@ -102,6 +109,7 @@ require("lazy").setup({
       vim.keymap.set("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
       vim.keymap.set("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
       vim.keymap.set("n", "<leader>b", "<cmd>BufferLinePick<cr>", { desc = "Pick buffer" })
+      vim.keymap.set("n", "<leader>bd", "<cmd>BufferLinePickClose<cr>", { desc = "Close buffer" })
     end,
   },
 
@@ -171,8 +179,8 @@ require("lazy").setup({
             ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept selection
           }),
           sources = cmp.config.sources({
-            { name = "nvim_lsp" }, -- Optional: Keep if you add LSP later
-            { name = "buffer" },   -- YOUR GOAL: Variable completion from text
+            { name = "nvim_lsp" }, -- Keep if add LSP later
+            { name = "buffer" },   -- Variable completion from text
             { name = "path" },
           }),
         })
