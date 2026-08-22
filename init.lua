@@ -73,6 +73,9 @@ require("lazy").setup({
         filters = {
             dotfiles = false,
         },
+        git = {
+            ignor = false,
+        },
         renderer = {
           indent_markers = { enable = true },
           icons = { show = { file = true, folder = true } },
